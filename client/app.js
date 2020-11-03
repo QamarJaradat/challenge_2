@@ -11,14 +11,17 @@ $('#selectedfile').on('change', (e) => {
 
 $('.submitInput').on('click', (e) => {
     var value = $('#filetext').val()
+    console.log("i'm here")
 
     $.ajax({
         type: "POST",
         url: "/",
         datatype: 'json',
-        body: JSON.stringify({ data: value }),
+        data: { data: value },
         success: function (res) {
-            console.log(res)
+            console.log("its woek", res)
+
+            $('.csvReport').val(res)
         },
         error: function (error) {
             console.error('Failed to fetch files', error);
