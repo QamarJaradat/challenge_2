@@ -20,11 +20,11 @@ app.post('/', (req, res) => {
     console.log("got post request")
     // var obj = JSON.parse(req.body.data)
     // console.log((req.body.data))
-    res.status(201)
-    res.set(headers)
+    // res.status(201)
+    // res.set(headers)
     convertedfile = jsonToCSV(req.body.data)
-    console.log(convertedfile)
-    res.end("Posted" + JSON.stringify(req.body.data))
+    // console.log(convertedfile)
+    res.send(convertedfile)
 })
 
 app.get('/', () => {
@@ -43,7 +43,12 @@ var jsonToCSV = (obj) => {
 
     var find = (obj) => {
         stringresult += Object.values(obj).slice(0, -1).join(',')
-
+        stringresult += "\n"
+        if (obj.children.length !== 0) {
+            obj.children.forEach(element => {
+                find(element)
+            });
+        }
     }
     find(obj)
 

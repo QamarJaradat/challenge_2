@@ -9,24 +9,25 @@ $('#selectedfile').on('change', (e) => {
     reader.readAsText(file);
 })
 
-$('.submitInput').on('click', (e) => {
+$('form').on('submit', (e) => {
+    e.preventDefault();
     var value = $('#filetext').val()
     console.log("i'm here")
 
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/",
-        datatype: 'json',
         data: { data: value },
         success: function (res) {
-            console.log("its woek", res)
-
-            $('.csvReport').val(res)
+            console.log("its work")
+            $('.csvReport').text(res)
         },
         error: function (error) {
             console.error('Failed to fetch files', error);
         }
     })
+    //reset the choosen file and the textarea
     $('#filetext').val("")
+    $('#selectedfile').val('')
 
 })
