@@ -27,9 +27,6 @@ app.post('/', (req, res) => {
     res.send(convertedfile)
 })
 
-app.get('/', () => {
-
-})
 
 app.listen(3000)
 console.log('lisening on 3000')
@@ -39,11 +36,13 @@ var jsonToCSV = (obj) => {
     obj = JSON.parse(obj)
     var stringresult = ''
     stringresult += Object.keys(obj).slice(0, -1).join(',')
-    stringresult += "\n"
+    var counter = 1
 
     var find = (obj) => {
-        stringresult += Object.values(obj).slice(0, -1).join(',')
         stringresult += "\n"
+        stringresult += counter + ". "
+        counter++
+        stringresult += Object.values(obj).slice(0, -1).join(',')
         if (obj.children.length !== 0) {
             obj.children.forEach(element => {
                 find(element)
@@ -54,7 +53,6 @@ var jsonToCSV = (obj) => {
 
 
     return stringresult
-    // return obj.children[0].children
 
 
 }

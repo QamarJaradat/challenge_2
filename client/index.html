@@ -9,18 +9,23 @@
 </head>
 
 <body>
-    <form>
-        Enter Your JSON File ...
-        <br>
-        <input type="file" accept=".json" id="selectedfile">
-        <br>
-        <textarea id="filetext"></textarea>
-        <br>
-        <input type="submit" value="Submit" class="submitInput">
-    </form>
+    <div style="margin-left: 5%; margin-top: 3%; ">
+        <form>
+            Enter Your JSON File ...
+            <br> <br>
+            <input type="file" accept=".json" id="selectedfile">
+            <br> <br>
+            <textarea style="width: 50%; height: 150px;" id="filetext"></textarea>
+            <br> <br>
+            <input type="submit" value="Submit" class="submitInput">
+            <br> <br>
+            <input type="text" hidden='true' id="testfilter">
+            <input id="buttonfilter" type="button" value="Filter" hidden='true'>
+        </form>
 
-    <h4>CSV Report</h4>
-    <pre class="csvReport">the result</pre>
+        <h4>CSV Report</h4>
+        <pre class="csvReport">The result will appear here</pre>
+    </div>
 
     <script src="./app.js"></script>
 </body>
